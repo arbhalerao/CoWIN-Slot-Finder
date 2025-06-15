@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Districts{% endblock title %}
+{% block content %}
+<div class="container py-5">
+    <div><h3>Select Your District</h3></div><br>
+    <div>
+        <table border="1" align="center" cellpadding="10" style="border-collapse: collapse; border-color: black;">
+            <thead>
+                <tr>
+                    <th scope="col">District No.</th>
+                    <th scope="col">District Name</th>
+                    <th scope="col">Center Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if districts %}
+                    {% for district in districts %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{district.district_name}}</td>
+                        <td><a href="{% url 'centers' district.district_id %}">Center Details</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>Not Available</td>
+                        <td>Not Available</td>
+                        <td>Not Available</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

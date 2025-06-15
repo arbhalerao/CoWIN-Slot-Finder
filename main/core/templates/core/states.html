@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}States{% endblock title %}
+{% block content %}
+<div class="container py-5">
+    <div align="center"><h3>SELECT STATE</h3></div><br>
+    <div>
+        <table border="1" align="center" cellpadding="10" style="border-collapse: collapse; border-color: black;">
+            <thead>
+                <tr>
+                    <th scope="col">State No.</th>
+                    <th scope="col">State Name</th>
+                    <th scope="col">District Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if states %}
+                    {% for state in states %}
+                    <tr>
+                        <th scope="row">{{state.state_id}}</th>
+                        <td>{{state.state_name}}</td>
+                        <td align="center"><a href="{% url 'districts' state.state_id %}">District Details</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>Not Available</td>
+                        <td>Not Available</td>
+                        <td>Not Available</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
