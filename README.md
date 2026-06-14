@@ -10,6 +10,7 @@ A web application to discover available COVID-19 vaccination slots across India 
 - The FastAPI backend exposes `/api/states`, `/api/districts/{state_id}`, `/api/centers/{district_id}`, and `/api/pincode`, calling CoWIN over **async `httpx`** with browser-like headers and IST-localized dates; permissive CORS lets the SPA call it directly.
 - The frontend drives a **State -> District -> Centers** drill-down plus pincode search, with all network access centralized in a small `api.js` fetch module pointed at the backend base URL (env-configurable).
 
+![Architecture](docs/arch.png)
 
 ## Features
 
